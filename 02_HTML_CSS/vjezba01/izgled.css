@@ -1,0 +1,81 @@
+body{
+    background-color: body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to top, #a8e6cf, #dcedc1);
+      color: #2d6a4f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+      color: #1b4332;
+      text-shadow: 1px 1px 3px #9ac9a4;
+    }
+    .sun {
+      margin: 20px 0;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle at center, #ffdd47 60%, #f6c90e 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 30px #fdd835;
+      position: relative;
+      animation: sun-spin 20s linear infinite;
+    }
+    @keyframes sun-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .flowers {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 600px;
+      margin-top: 20px;
+    }
+    .flower {
+      width: 60px;
+      height: 60px;
+      position: relative;
+      background: #ff758f;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      box-shadow:
+        15px 0 #ff758f,
+        30px 0 #ff758f,
+        45px 0 #ff758f,
+        15px -15px #ff758f,
+        30px -15px #ff758f;
+      animation: flower-grow 3s ease-in-out infinite alternate;
+    }
+    .flower::before {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      width: 8px;
+      height: 30px;
+      background: #38755b;
+      border-radius: 4px;
+      transform: translateX(-50%);
+      box-shadow: 12px 2px #38755b;
+    }
+    @keyframes flower-grow {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.15); }
+    }
+    footer {
+      margin-top: auto;
+      padding: 15px;
+      font-size: 0.9em;
+      color: #52734d;
+    }
+}
