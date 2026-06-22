@@ -19,8 +19,24 @@ body{
     border-radius: 6px;
     box-shadow: 0.2px 10px rgba(0,0,0,.15, green, blue, alpha);
 }
-header{
+
+h1{
     text-align: center;
+}
+
+h2{
+    text-decoration: underline;
+    text-align: center;
+}
+
+section p{
+    text-align: left;
+}
+
+
+
+header{
+    text-align: left;
     margin-bottom: 35px;
 }
 
@@ -150,6 +166,13 @@ footer hr{
     margin-bottom: 25px;
 }
 
+.contact{
+    color: #4285f4;
+    text-decoration: underline wavy orange;
+}
+
+
+
 .author{
     color: #d8871f;
     font-weight: bold;
@@ -159,3 +182,4 @@ small{
     display: block;
     margin-top: 15px;
 }
+
