@@ -1,0 +1,31 @@
+body{
+    background-color: rgb(231, 189, 135);
+}
+
+table,td,th{
+    border: 1px solid rgb(192, 62, 67);
+    border-collapse: collapse;
+}
+
+table{
+    width: 100vh;
+}
+
+th{
+    background-color: #9ba29b;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    padding: 0.8rem;
+}
+
+tbody tr:hover{
+    background-color: rgb(230, 230, 30);
+}
+
+tbody tr :first-child{
+    text-align: center;
+}
+caption{
+    caption-side: bottom;
+}
