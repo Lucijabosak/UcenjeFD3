@@ -1,0 +1,41 @@
+body{
+    background-color: #74e9e9;
+    color: #333;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero{
+    background: #fff;
+    padding: 50px;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+
+.image{
+    width: 50%;
+}
+
+.image img{
+    width: 100%;
+    border-radius: 10px;
+}
+.btn{
+    display: inline-block;
+    background: #123d7a;
+    color: white;
+    text-decoration: none;
+    padding: 14px 28px;
+     border-radius:5px ;
+     transition: .3s;
+}
