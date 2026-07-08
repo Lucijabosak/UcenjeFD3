@@ -1,0 +1,184 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RWD Foundation</title>
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+
+  <div class="grid-container">
+    <!-- Početak izbornik -->
+    <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+      <button class="menu-icon" type="button" data-toggle></button>
+      <div class="title-bar-title">Izbornik</div>
+    </div>
+
+    <div class="top-bar" id="example-menu">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="menu-text">Edunova</li>
+          <li class="has-submenu">
+            <a href="#0">Tehnologije</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="#0">GIT</a></li>
+              <li><a href="#0">HTML &amp; CSS</a></li>
+              <li><a href="#0">RWD</a></li>
+              <li><a href="#0">JS</a></li>
+            </ul>
+          </li>
+          <li><a href="#0">Završni rad</a></li>
+
+        </ul>
+      </div>
+
+    </div>
+    <!-- Kraj izbornik -->
+
+    <!-- Grid sustav -->
+    <div class="grid-x">
+      <div style="background-color: #0920ee;" class="large-4 medium-6 cell">A</div>
+      <div style="background-color: green;" class="large-8 medium-6 cell">B</div>
+      <div style="background-color: rgb(245, 19, 68);" class="large-6 cell">C</div>
+      <div style="background-color: rgb(233, 12, 225);" class="large-6 cell">D</div>
+
+    </div>
+
+
+    <!-- Kraj Grid sustav -->
+
+    <!-- Zadatak: isprobati što veći broj komponenti -->
+    <!-- 1. -->
+    <div class="orbit" role="region" aria-label="Favorite Text Ever" data-orbit>
+      <ul class="orbit-container">
+        <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous
+            Slide</span>&#9664;</button>
+        <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+        <li class="is-active orbit-slide">
+          <div class="docs-example-orbit-slide">
+            <p><strong>This is dodgerblue.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </li>
+        <li class="orbit-slide">
+          <div class="docs-example-orbit-slide">
+            <p><strong>This is rebeccapurple.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </li>
+        <li class="orbit-slide">
+          <div class="docs-example-orbit-slide">
+            <p><strong>This is darkgoldenrod.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </li>
+        <li class="orbit-slide">
+          <div class="docs-example-orbit-slide">
+            <p><strong>This is lightseagreen.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </li>
+      </ul>
+      <nav class="orbit-bullets">
+        <button class="is-active" data-slide="0">
+          <span class="show-for-sr">First slide details.</span>
+          <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+        </button>
+        <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+        <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+        <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+      </nav>
+
+
+    </div>
+    <!-- 2. -->
+
+    <ul class="tabs" data-tabs id="example-tabs">
+      <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
+      <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
+      <li class="tabs-title"><a href="#panel3">Tab 3</a></li>
+      <li class="tabs-title"><a href="#panel4">Tab 4</a></li>
+      <li class="tabs-title"><a href="#panel5">Tab 5</a></li>
+      <li class="tabs-title"><a href="#panel6">Tab 6</a></li>
+    </ul>
+
+    <div class="tabs-content" data-tabs-content="example-tabs">
+      <div class="tabs-panel is-active" id="panel1">
+        <p>One</p>
+        <p>Check me out! I'm a super cool Tab panel with text content!</p>
+      </div>
+      <div class="tabs-panel" id="panel2">
+        <p>Two</p>
+        <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg" alt="">
+      </div>
+      <div class="tabs-panel" id="panel3">
+        <p>Three</p>
+        <p>Check me out! I'm a super cool Tab panel with text content!</p>
+      </div>
+      <div class="tabs-panel" id="panel4">
+        <p>Four</p>
+        <img class="thumbnail" src="assets/img/generic/rectangle-2.jpg" alt="">
+      </div>
+      <div class="tabs-panel" id="panel5">
+        <p>Five</p>
+        <p>Check me out! I'm a super cool Tab panel with text content!</p>
+      </div>
+      <div class="tabs-panel" id="panel6">
+        <p>Six</p>
+        <img class="thumbnail" src="assets/img/generic/rectangle-8.jpg" alt="">
+      </div>
+    </div>
+    <!-- 3. -->
+     <span class="primary label">Primary Label</span>
+<span class="secondary label">Secondary Label</span>
+<span class="success label">Success Label</span>
+<span class="alert label">Alert Label</span>
+<span class="warning label">Warning Label</span>
+
+<!-- 4. -->
+ <div class="grid-x grid-margin-x" data-equalizer data-equalize-on="medium" id="test-eq">
+  <div class="cell medium-4">
+    <div class="callout" data-equalizer-watch>
+      <img src= "assets/img/generic/square-1.jpg" alt="">
+    </div>
+  </div>
+  <div class="cell medium-4">
+    <div class="callout" data-equalizer-watch>
+      <p>Pellentesque habitant morbi tristique senectus et netus et, ante.</p>
+    </div>
+  </div>
+  <div class="cell medium-4">
+    <div class="callout" data-equalizer-watch>
+      <img src= "assets/img/generic/rectangle-1.jpg" alt="">
+    </div>
+  </div>
+</div>
+    <!-- Kraj -->
+  </div>
+
+
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/vendor/what-input.js"></script>
+  <script src="js/vendor/foundation.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
