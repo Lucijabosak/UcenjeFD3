@@ -8,7 +8,7 @@ document.getElementById('btnRun').addEventListener('click', () => {
 
     const task = document.getElementById('taskSelect').value
     let rezultat
-// debugger
+    // debugger
     // Za svaki zadatak zahtijevamo određene ulaze
     if (task === '1') {
         // Početak 1. zadatka
@@ -16,112 +16,120 @@ document.getElementById('btnRun').addEventListener('click', () => {
         const aBroj = Number(a)
         const bBroj = Number(b)
         rezultat = aBroj + bBroj
-        
+
         // Kraj 1. zadatka
     }
 
     if (task === '2') {
         // Početak 2. zadatka
         // 2. Konkatenacija: Spoji A i B kao tekst (String)
-const aTekst = a
-const bTekst = b
-rezultat = aTekst + bTekst
+        const aTekst = a
+        const bTekst = b
+        rezultat = aTekst + bTekst
 
 
         // Kraj 2. zadatka
-        
+
     }
 
     if (task === '3') {
         // Početak 3. zadatka
         // 3. Aritmetika i zagrade: Izračunaj (A + B) * C - D
-const abroj = Number (a)
-const bbroj = Number (b)
-const cbroj = Number(c)
-const dbroj = Number (d)
-rezultat = (abroj + bbroj) * cbroj - dbroj
+        const abroj = Number(a)
+        const bbroj = Number(b)
+        const cbroj = Number(c)
+        const dbroj = Number(d)
+        rezultat = (abroj + bbroj) * cbroj - dbroj
 
 
         // Kraj 3. zadatka
-        
+
     }
 
     if (task === '4') {
         // Početak 4. zadatka
         // 4. Modulo operator: Ostatak pri dijeljenju A s B (A % B)
-const abroj = Number (a)
-const bbroj = Number (b)
-rezultat = abroj % bbroj
+        const abroj = Number(a)
+        const bbroj = Number(b)
+        rezultat = abroj % bbroj
 
         // Kraj 4. zadatka
-        
+
     }
 
     if (task === '5') {
         // Početak 5. zadatka
         // 5. Stroga jednakost: Jesu li A i B identični po vrijednosti i tipu (A === B)?
-
+        const abroj = Number(a)
+        const bbroj = Number(b)
+        rezultat = (a === b)
 
         // Kraj 5. zadatka
-        
+
     }
 
     if (task === '6') {
         // Početak 6. zadatka
         // 6. Relacijski operatori: Je li zbroj A i B veći od umnoška C i D?
-const abroj = Number (a)
-const bbroj = Number (b)
-const cbroj = Number (c)
-const dbroj = Number (d)
-rezultat = (a + b) > (c + d)
+        const abroj = Number(a)
+        const bbroj = Number(b)
+        const cbroj = Number(c)
+        const dbroj = Number(d)
+        rezultat = (a + b) > (c + d)
 
         // Kraj 6. zadatka
-        
+
     }
 
     if (task === '7') {
         // Početak 7. zadatka
         // 7. Logički AND (&&): Je li A pozitivno I istovremeno B parno?
-const abroj = Number (a)
-const bbroj = Number (b)
-rezultat = (abroj > 0) && (bbroj % 2 === 0)
+        const abroj = Number(a)
+        const bbroj = Number(b)
+        rezultat = (abroj > 0) && (bbroj % 2 === 0)
 
         // Kraj 7. zadatka
-        
+
     }
 
     if (task === '8') {
         // Početak 8. zadatka
         // 8. Logički OR (||): Je li barem jedno od polja C ili D prazan string?
-rezultat =  c === '' || d === ''
+        rezultat = c === '' || d === ''
 
         // Kraj 8. zadatka
-        
+
     }
 
     if (task === '9') {
         // Početak 9. zadatka
         // 9. Operator typeof: Ispiši tip podatka za izraz (A * B)
-const abroj = Number (a)
-const bbroj = Number (b)
+        const abroj = Number(a)
+        const bbroj = Number(b)
 
 
         // Kraj 9. zadatka
-        
+
     }
 
     if (task === '10') {
         // Početak 10. zadatka
         // 10. Ternarni operator: Ako je A > B ispiši vrijednost C, inače ispiši D
-
+        const abroj = Number(a)
+        const bbroj = Number(b)
+        const cbroj = Number(c)
+        const dbroj = Number(d)
+        rezultat = (abroj > bbroj) ? cbroj : dbroj
 
         // Kraj 10. zadatka
-        
+
     }
     if (task === '11') {
         // Početak 11. zadatka
         // 11. Inkrement / Dekrement: Izračunaj trik izraz (A++ - --B)
-
+        let abroj = Number(a)
+        let bbroj = Number(b)
+        rezultat = abroj++ - --bbroj
 
         // Kraj 11. zadatka
     }
@@ -129,7 +137,9 @@ const bbroj = Number (b)
     if (task === '12') {
         // Početak 12. zadatka
         // 12. Različito (!= vs !==): Usporedi A i B po vrijednosti (!=) i po tipu (!==)
-
+        const abroj = a
+        const bbroj = b
+        rezultat = (abroj != bbroj) + " | " + (abroj !== bbroj)
 
         // Kraj 12. zadatka
     }
@@ -137,7 +147,9 @@ const bbroj = Number (b)
     if (task === '13') {
         // Početak 13. zadatka
         // 13. Nullish Coalescing (??): Ako je A prazan string, koristi default vrijednost iz B
-
+        const abroj = a
+        const bbroj = b
+        rezultat = (abroj === "") ? bbroj : abroj
 
         // Kraj 13. zadatka
     }
@@ -145,7 +157,9 @@ const bbroj = Number (b)
     if (task === '14') {
         // Početak 14. zadatka
         // 14. Array i Spread operator (...): Spoji [A, B] i [C, D] u jedan novi niz
-
+        const niz1 = [a, b]
+        const niz2 = [c, d]
+        rezultat = [...niz1, ...niz2]
 
         // Kraj 14. zadatka
     }
@@ -153,6 +167,11 @@ const bbroj = Number (b)
     if (task === '15') {
         // Početak 15. zadatka
         // 15. Destrukturiranje niza: Iz niza [A, B, C, D] izvuci prva dva elementa u zasebne varijable i ispiši ih u konzolu
+const niz = [a, b, c, d]
+const [prvi, drugi] = niz
+console.log(prvi)
+console.log(drugi)
+rezultat = prvi + " " + drugi
 
 
         // Kraj 15. zadatka
@@ -161,6 +180,12 @@ const bbroj = Number (b)
     if (task === '16') {
         // Početak 16. zadatka
         // 16. Rad s objektima: Kreiraj JSON objekt { ime: A, grad: B } i ispiši ga u konzolu
+const objekt = {
+    ime: a,
+    grad: b
+}
+console.log(objekt)
+rezultat = JSON.stringify(objekt)
 
 
         // Kraj 16. zadatka
@@ -169,7 +194,13 @@ const bbroj = Number (b)
     if (task === '17') {
         // Početak 17. zadatka
         // 17. Optional Chaining (?.): Sigurno pročitaj svojstvo iz ugniježđenog objekta
-
+const osoba = {
+    ime: a,
+    adresa: {
+        grad: b
+    }
+}
+rezultat = osoba ?. adresa ?. grad
 
         // Kraj 17. zadatka
     }
@@ -177,7 +208,9 @@ const bbroj = Number (b)
     if (task === '18') {
         // Početak 18. zadatka
         // 18. Logički NOT (!): Obrni logičku vrijednost provjere (je li A veće od B)
-
+ let a = 5
+ let b = 10
+ rezultat = ! (a > b)
 
         // Kraj 18. zadatka
     }
