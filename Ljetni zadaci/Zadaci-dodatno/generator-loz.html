@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Napredni Generator Lozinki</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 520px;
+            width: 100%;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+        h2 {
+            color: #44b744;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .form-row label {
+            font-size: 15px;
+            color: #b0b0b0;
+        }
+        .form-row input[type="number"] {
+            width: 80px;
+            padding: 8px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 15px;
+        }
+        .form-row input[type="number"]:focus {
+            border-color: #44b744;
+            outline: none;
+        }
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+            background-color: #252525;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        .checkbox-grid label {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: #ccc;
+        }
+        .checkbox-grid input[type="checkbox"] {
+            accent-color: #44b744;
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        .gen-btn {
+            width: 100%;
+            background-color: #44b744;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .gen-btn:hover {
+            background-color: #3ca33c;
+        }
+        .output-box {
+            margin-top: 25px;
+            background: #111;
+            border: 1px dashed #444;
+            padding: 15px;
+            border-radius: 6px;
+            max-height: 220px;
+            overflow-y: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            color: #00ff00;
+            white-space: pre-line;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Generator Lozinki</h2>
+    
+    <div class="form-row">
+        <label for="duzina">Dužina lozinke:</label>
+        <input type="number" id="duzina" value="12" min="4" max="50">
+    </div>
+
+    <div class="form-row">
+        <label for="brojLozinki">Broj lozinki za generiranje:</label>
+        <input type="number" id="brojLozinki" value="1" min="1" max="20">
+    </div>
+
+    <div class="checkbox-grid">
+        <label><input type="checkbox" id="velika" checked> Uključena velika slova</label>
+        <label><input type="checkbox" id="mala" checked> Uključena mala slova</label>
+        <label><input type="checkbox" id="brojevi" checked> Uključeni brojevi</label>
+        <label><input type="checkbox" id="interpunkcija" checked> Uključena interpunkcija</label>
+        <label><input type="checkbox" id="pocetakBroj"> Počinje s brojem</label>
+        <label><input type="checkbox" id="pocetakZnak"> Počinje sa znakom</label>
+        <label><input type="checkbox" id="krajBroj"> Završava s brojem</label>
+        <label><input type="checkbox" id="krajZnak"> Završava sa znakom</label>
+        <label><input type="checkbox" id="bezPonavljanja"> Nema ponavljajuće znakove</label>
+    </div>
+
+    <button onclick="pokreniGenerator()" class="gen-btn">Generiraj rezultat</button>
+
+    <div class="output-box" id="izlazLozinki">Ovdje će se pojaviti generirane lozinke...</div>
+</div>
+
+<script>
+    function pokreniGenerator() {
+        const duljina = parseInt(document.getElementById('duzina').value) || 12;
+        const kolicina = parseInt(document.getElementById('brojLozinki').value) || 1;
+        
+        const vSlova = document.getElementById('velika').checked;
+        const mSlova = document.getElementById('mala').checked;
+        const br = document.getElementById('brojevi').checked;
+        const int = document.getElementById('interpunkcija').checked;
+        
+        const pBroj = document.getElementById('pocetakBroj').checked;
+        const pZnak = document.getElementById('pocetakZnak').checked;
+        const kBroj = document.getElementById('krajBroj').checked;
+        const kZnak = document.getElementById('krajZnak').checked;
+        const bezPonavljanja = document.getElementById('bezPonavljanja').checked;
+
+        const izlaz = document.getElementById('izlazLozinki');
+
+        
+        const skupVelika = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const skupMala = "abcdefghijklmnopqrstuvwxyz";
+        const skupBrojevi = "0123456789";
+        const skupZnakovi = "!@#$%^&*()_+-=[]{}|;':\",./<>?";
+
+        
+        let bazaZnakova = "";
+        if (vSlova) bazaZnakova += skupVelika;
+        if (mSlova) bazaZnakova += skupMala;
+        if (br) bazaZnakova += skupBrojevi;
+        if (int) bazaZnakova += skupZnakovi;
+
+        
+        if (bazaZnakova === "" && !pBroj && !pZnak && !kBroj && !kZnak) {
+            izlaz.style.color = "#ff5555";
+            izlaz.textContent = "Greška: Morate uključiti barem jedan skup znakova!";
+            return;
+        }
+
+        
+        if ((pBroj && pZnak) || (kBroj && kZnak)) {
+            izlaz.style.color = "#ff5555";
+            izlaz.textContent = "Greška: Lozinka ne može istovremeno početi/završiti i brojem i znakom!";
+            return;
+        }
+
+        izlaz.style.color = "#00ff00";
+        let konacneLozinke = [];
+
+        for (let i = 0; i < kolicina; i++) {
+            let lozinkaNiz = new Array(duljina).fill(null);
+            let iskoristeno = new Set();
+
+            
+            function uzmiSlucajanZnak(skup) {
+                return skup[Math.floor(Math.random() * skup.length)];
+            }
+
+            
+            if (pBroj) {
+                let z = uzmiSlucajanZnak(skupBrojevi);
+                lozinkaNiz[0] = z;
+                iskoristeno.add(z);
+            } else if (pZnak) {
+                let z = uzmiSlucajanZnak(skupZnakovi);
+                lozinkaNiz[0] = z;
+                iskoristeno.add(z);
+            }
+
+            
+            if (kBroj) {
+                let z = uzmiSlucajanZnak(skupBrojevi);
+                
+                let brojacSigurnosti = 0;
+                while (bezPonavljanja && iskoristeno.has(z) && brojacSigurnosti < 100) {
+                    z = uzmiSlucajanZnak(skupBrojevi);
+                    brojacSigurnosti++;
+                }
+                lozinkaNiz[duljina - 1] = z;
+                iskoristeno.add(z);
+            } else if (kZnak) {
+                let z = uzmiSlucajanZnak(skupZnakovi);
+                let brojacSigurnosti = 0;
+                while (bezPonavljanja && iskoristeno.has(z) && brojacSigurnosti < 100) {
+                    z = uzmiSlucajanZnak(skupZnakovi);
+                    brojacSigurnosti++;
+                }
+                lozinkaNiz[duljina - 1] = z;
+                iskoristeno.add(z);
+            }
+
+            
+            let greskaBaze = false;
+            for (let j = 0; j < duljina; j++) {
+                if (lozinkaNiz[j] !== null) continue; 
+
+                let nadjenZnak = false;
+                let pokusaji = 0;
+
+                while (pokusaji < 1000) {
+                    let slucajanZnak = uzmiSlucajanZnak(bazaZnakova);
+                    
+                    if (bezPonavljanja && iskoristeno.has(slucajanZnak)) {
+                        pokusaji++;
+                        continue;
+                    }
+
+                    lozinkaNiz[j] = slucajanZnak;
+                    iskoristeno.add(slucajanZnak);
+                    nadjenZnak = true;
+                    break;
+                }
+
+                if (!nadjenZnak) {
+                    greskaBaze = true;
+                    break;
+                }
+            }
+
+            if (greskaBaze) {
+                izlaz.style.color = "#ff5555";
+                izlaz.textContent = "Greška: Nemoguće generirati lozinku bez ponavljanja znakova. Odabrani skupovi nemaju dovoljno unikatnih znakova za traženu dužinu!";
+                return;
+            }
+
+            konacneLozinke.push(lozinkaNiz.join(''));
+        }
+
+       
+        izlaz.textContent = konacneLozinke.join('\n');
+    }
+</script>
+
+</body>
+</html>

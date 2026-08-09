@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zbroj elemenata niza</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f857a6, #ff5858);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            width: 350px;
+            text-align: center;
+        }
+        h2 { color: #333; }
+        p { color: #666; font-size: 13px; }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff5858;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover { background: #e04f4f; }
+        .result {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+            text-align: left;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 4px solid #ff5858;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Zbroj elemenata niza</h2>
+    <p>Unesite elemente odvojene zarezom (npr: 10, abc, 5, 2.5, tekst)</p>
+    <input type="text" id="nizUnos" placeholder="10, 20, tekst, 5">
+    <button onclick="izracunajNiz()">Izračunaj Zbroj</button>
+    <div class="result" id="rezultat3" style="display:none;"></div>
+</div>
+
+<script>
+    function izracunajNiz() {
+        const unos = document.getElementById('nizUnos').value;
+        const rezDiv = document.getElementById('rezultat3');
+
+        if (!unos.trim()) {
+            rezDiv.style.display = "block";
+            rezDiv.textContent = "Unesite barem jednu vrijednost!";
+            return;
+        }
+
+        
+        const siroviNiz = unos.split(',');
+        let zbroj = 0;
+        let pronadeniBrojevi = [];
+
+        siroviNiz.forEach(element => {
+            const ociscen = element.trim();
+            
+            if (ociscen !== "" && !isNaN(ociscen)) {
+                const broj = parseFloat(ociscen);
+                zbroj += broj;
+                pronadeniBrojevi.push(broj);
+            }
+        });
+
+        rezDiv.style.display = "block";
+        if (pronadeniBrojevi.length > 0) {
+            rezDiv.innerHTML = `
+                <strong>Prepoznati brojevi:</strong> [ ${pronadeniBrojevi.join(', ')} ]<br>
+                <strong>Zbroj elemenata:</strong> ${zbroj}
+            `;
+        } else {
+            rezDiv.innerHTML = `<strong>Nije pronađen nijedan broj u nizu!</strong> Zbroj je 0.`;
+        }
+    }
+</script>
+
+</body>
+</html>

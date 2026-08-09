@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Ljubavi - Ljubavni Kalkulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="kalkulator-card">
+        <h1>Test Ljubavi</h1>
+        <p class="upute">
+            Napiši svoje ime i ime svoje simpatije. Nakon toga program će izračunati koliko se puta svako slovo ponavlja, 
+            a zatim rekurzivno zbrajati vanjske brojeve dok ne dobiješ konačan postotak vaše ljubavi!
+        </p>
+
+        <div class="input-kontejner">
+            <div class="polje-grupa">
+                <label for="mojeIme">Tvoje ime:</label>
+                <input type="text" id="mojeIme" placeholder="Npr. Marta">
+            </div>
+            <div class="polje-grupa">
+                <label for="imeSimpatije">Ime simpatije:</label>
+                <input type="text" id="imeSimpatije" placeholder="Npr. Manuel">
+            </div>
+        </div>
+
+        <button id="btnIzracunaj">Izračunaj ljubav</button>
+
+        <div id="prostorZaRezultat" class="srce-kontejner" style="display: none;">
+            <div class="imena-prikaz">
+                <span id="prikazIme1"></span>
+                <span id="prikazIme2"></span>
+            </div>
+            <div id="ispisPostupka" class="postupak-matrica"></div>
+            <div id="konacanPostotak" class="postotak-rezultat"></div>
+        </div>
+    </div>
+
+    <script src="skripta.js"></script>
+</body>
+</html>

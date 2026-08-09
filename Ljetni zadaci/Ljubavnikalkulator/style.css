@@ -1,0 +1,142 @@
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, 
+    #b10202, #f32929);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.kalkulator-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 35px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    text-align: center;
+    border: 3px solid #ffb3e6;
+}
+
+h1 {
+    color: #090008;
+    font-family: 'Georgia', serif;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.upute {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.input-kontejner {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.polje-grupa {
+    flex: 1;
+    text-align: left;
+}
+
+.polje-grupa label {
+    display: block;
+    font-size: 0.9rem;
+    color: #e53d0f;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    text-transform: uppercase; 
+}
+
+input[type="text"]:focus {
+    border-color: #f20606;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #9d0303;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #ee515b;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+
+.srce-kontejner {
+    margin-top: 30px;
+    background-color: #fbefff;
+    border: 2px solid #f0c3f7;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+}
+
+
+.srce-kontejner::before {
+    content: '🦋';
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    font-size: 2rem;
+    opacity: 0.8;
+}
+
+.imena-prikaz {
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #333;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #dca3e3;
+    padding-bottom: 10px;
+}
+
+.postupak-matrica {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #444;
+    line-height: 1.8;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.postotak-rezultat {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #c2185b;
+    border-top: 2px solid #f0c3f7;
+    padding-top: 10px;
+}

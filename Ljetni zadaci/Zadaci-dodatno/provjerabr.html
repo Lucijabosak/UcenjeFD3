@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provjera Broja</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            width: 300px;
+            text-align: center;
+        }
+        h2 { color: #2c3e50; }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #11998e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover { background: #0f867d; }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Provjera Broja</h2>
+    <input type="number" id="broj" placeholder="Unesite bilo koji broj">
+    <button onclick="provjeriBroj()">Provjeri</button>
+    <div class="result" id="rezultat2"></div>
+</div>
+
+<script>
+    function provjeriBroj() {
+        const unos = document.getElementById('broj').value;
+        const rezDiv = document.getElementById('rezultat2');
+
+        if (unos === "") {
+            rezDiv.style.color = '#7f8c8d';
+            rezDiv.textContent = "Polje je prazno!";
+            return;
+        }
+
+        const broj = parseFloat(unos);
+
+        if (broj > 0) {
+            rezDiv.style.color = '#27ae60';
+            rezDiv.textContent = "Broj je POZITIVAN.";
+        } else if (broj < 0) {
+            rezDiv.style.color = '#c0392b';
+            rezDiv.textContent = "Broj je NEGATIVAN.";
+        } else {
+            rezDiv.style.color = '#2c3e50';
+            rezDiv.textContent = "Broj je NULA.";
+        }
+    }
+</script>
+
+</body>
+</html>

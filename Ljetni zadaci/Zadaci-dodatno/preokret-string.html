@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preokret Stringa</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #fc4a1a, #f7b733);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            width: 360px;
+            text-align: center;
+        }
+        h2 { color: #333; margin-bottom: 10px; }
+        p { color: #666; font-size: 14px; margin-bottom: 20px; }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        input:focus { border-color: #fc4a1a; outline: none; }
+        button {
+            padding: 12px;
+            background: #fc4a1a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        button:hover { background: #df3b11; }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #fc4a1a;
+            text-align: left;
+            font-size: 16px;
+            color: #333;
+            word-wrap: break-word;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Preokret Stringa</h2>
+    <p>Unesite tekst koji želite ispisati naopako:</p>
+    
+    <div class="input-group">
+        <input type="text" id="tekstUnos" placeholder="Npr. splitska riva">
+        <button onclick="preokreniTekst()">Preokreni Tekst</button>
+    </div>
+
+    <div class="result" id="rezultat6"></div>
+</div>
+
+<script>
+    function preokreniTekst() {
+        const unos = document.getElementById('tekstUnos').value;
+        const rezDiv = document.getElementById('rezultat6');
+
+        if (unos.trim() === "") {
+            rezDiv.style.display = 'block';
+            rezDiv.style.borderLeftColor = '#d32f2f';
+            rezDiv.style.color = '#d32f2f';
+            rezDiv.innerHTML = "<strong>Upozorenje:</strong> Polje ne smije biti prazno!";
+            return;
+        }
+
+        
+        
+        const naopako = unos.split('').reverse().join('');
+
+        rezDiv.style.display = 'block';
+        rezDiv.style.borderLeftColor = '#fc4a1a';
+        rezDiv.style.color = '#333';
+        rezDiv.innerHTML = `<strong>Original:</strong> ${unos}<br><strong>Naopako:</strong> <span style="color:#fc4a1a;">${naopako}</span>`;
+    }
+</script>
+
+</body>
+</html>

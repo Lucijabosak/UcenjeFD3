@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonaccijev Niz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1f4068, #162447);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 380px;
+            text-align: center;
+        }
+        h2 { color: #162447; margin-bottom: 10px; }
+        p { color: #666; font-size: 14px; margin-bottom: 20px; }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e4e4e4;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus { border-color: #1f4068; outline: none; }
+        button {
+            padding: 12px 20px;
+            background: #e43f5a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        button:hover { background: #ca344b; }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f7f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #e43f5a;
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 15px;
+            color: #162447;
+            word-wrap: break-word;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Fibonaccijev Niz</h2>
+    <p>Unesite koliko početnih brojeva niza želite ispisati:</p>
+    
+    <div class="input-group">
+        <input type="number" id="fibN" min="1" max="100" placeholder="Npr. 8">
+        <button onclick="generirajFibonacci()">Ispiši</button>
+    </div>
+
+    <div class="result" id="rezultat5" style="display: none;"></div>
+</div>
+
+<script>
+    function generirajFibonacci() {
+        const n = parseInt(document.getElementById('fibN').value);
+        const rezDiv = document.getElementById('rezultat5');
+        
+        if (isNaN(n) || n <= 0) {
+            rezDiv.style.display = 'block';
+            rezDiv.style.borderLeftColor = '#b21f1f';
+            rezDiv.style.color = '#b21f1f';
+            rezDiv.textContent = "Molimo unesite ispravan pozitivan broj veći od 0.";
+            return;
+        }
+
+        
+        let niz = [];
+        
+        if (n >= 1) niz.push(0);
+        if (n >= 2) niz.push(1);
+        
+        
+        for (let i = 2; i < n; i++) {
+            niz.push(niz[i - 1] + niz[i - 2]);
+        }
+
+        rezDiv.style.display = 'block';
+        rezDiv.style.borderLeftColor = '#e43f5a';
+        rezDiv.style.color = '#162447';
+        rezDiv.innerHTML = `<strong>Prvih ${n} brojeva:</strong><br>${niz.join(', ')}`;
+    }
+</script>
+
+</body>
+</html>

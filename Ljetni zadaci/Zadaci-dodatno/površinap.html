@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Površina Pravokutnika</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74abe2, #5563c1);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 320px;
+            text-align: center;
+        }
+        h2 { color: #333; margin-bottom: 20px; }
+        .input-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; margin-bottom: 5px; color: #666; font-size: 14px; }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus { border-color: #5563c1; outline: none; }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #5563c1;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button:hover { background: #4350ac; }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Površina Pravokutnika</h2>
+    <div class="input-group">
+        <label>Duljina (a):</label>
+        <input type="number" id="duljina" placeholder="Unesite duljinu">
+    </div>
+    <div class="input-group">
+        <label>Širina (b):</label>
+        <input type="number" id="sirina" placeholder="Unesite širinu">
+    </div>
+    <button onclick="izracunajPovrsinu()">Izračunaj</button>
+    <div class="result" id="rezultat1"></div>
+</div>
+
+<script>
+    function izracunajPovrsinu() {
+        const a = parseFloat(document.getElementById('duljina').value);
+        const b = parseFloat(document.getElementById('sirina').value);
+        const rezDiv = document.getElementById('rezultat1');
+
+        if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
+            rezDiv.style.color = '#c62828';
+            rezDiv.textContent = "Unesite važeće pozitivne brojeve!";
+            return;
+        }
+
+        const povrsina = a * b;
+        rezDiv.style.color = '#2e7d32';
+        rezDiv.textContent = `Površina iznosi: ${povrsina}`;
+    }
+</script>
+
+</body>
+</html>

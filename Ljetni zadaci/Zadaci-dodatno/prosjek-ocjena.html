@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosjek Ocjena</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #4a00e0, #8e2de2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 360px;
+            text-align: center;
+        }
+        h2 { color: #333; margin-bottom: 10px; }
+        p { color: #666; font-size: 14px; margin-bottom: 20px; }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        input:focus { border-color: #8e2de2; outline: none; }
+        button {
+            padding: 10px 15px;
+            background: #8e2de2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover { background: #7425c9; }
+        #poljaZaOcjene {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding-right: 5px;
+        }
+        .ocjena-red {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .ocjena-red label { font-size: 14px; color: #444; }
+        .ocjena-red input { max-width: 80px; text-align: center; }
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            color: #4a00e0;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Prosjek Ocjena</h2>
+    <p>Unesite koliko ocjena želite izračunati:</p>
+    
+    <div class="input-group">
+        <input type="number" id="brojOcjena" min="1" max="20" placeholder="Npr. 5">
+        <button onclick="generirajPolja()">Generiraj</button>
+    </div>
+
+    <div id="poljaZaOcjene"></div>
+    <div class="result" id="rezultat4" style="display: none;"></div>
+</div>
+
+<script>
+    function generirajPolja() {
+        const broj = parseInt(document.getElementById('brojOcjena').value);
+        const kontejner = document.getElementById('poljaZaOcjene');
+        const rezDiv = document.getElementById('rezultat4');
+        
+        kontejner.innerHTML = '';
+        rezDiv.style.display = 'none';
+
+        if (isNaN(broj) || broj <= 0) {
+            alert("Molimo unesite ispravan broj veći od 0.");
+            return;
+        }
+
+        
+        for (let i = 1; i <= broj; i++) {
+            const red = document.createElement('div');
+            red.className = 'ocjena-red';
+            red.innerHTML = `
+                <label>Ocjena ${i}:</label>
+                <input type="number" class="ocjena-input" min="1" max="5" placeholder="1-5">
+            `;
+            kontejner.appendChild(red);
+        }
+
+        
+        const btnIzracun = document.createElement('button');
+        btnIzracun.textContent = "Izračunaj Prosjek";
+        btnIzracun.style.width = "100%";
+        btnIzracun.style.marginTop = "10px";
+        btnIzracun.onclick = izracunajProsjek;
+        kontejner.appendChild(btnIzracun);
+    }
+
+    function izracunajProsjek() {
+        const polja = document.querySelectorAll('.ocjena-input');
+        const rezDiv = document.getElementById('rezultat4');
+        let zbroj = 0;
+        let brojac = 0;
+        let nevazece = false;
+
+        polja.forEach(polje => {
+            const vrijednost = parseFloat(polje.value);
+            if (isNaN(vrijednost) || vrijednost < 1 || vrijednost > 5) {
+                nevazece = true;
+            } else {
+                zbroj += vrijednost;
+                brojac++;
+            }
+        });
+
+        if (nevazece) {
+            rezDiv.style.color = '#c62828';
+            rezDiv.style.display = 'block';
+            rezDiv.textContent = "Sve ocjene moraju biti u rasponu od 1 do 5!";
+            return;
+        }
+
+        const prosjek = zbroj / brojac;
+        rezDiv.style.color = '#4a00e0';
+        rezDiv.style.display = 'block';
+        rezDiv.textContent = `Prosjek ocjena iznosi: ${prosjek.toFixed(2)}`;
+    }
+</script>
+
+</body>
+</html>

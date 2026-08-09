@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciklična Matrica - 16 Modova</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="redovi">Broj redaka (2-50):</label>
+                <input type="number" id="redovi" class="input-box" value="5" min="2" max="50">
+            </div>
+            
+            <div class="input-group">
+                <label for="stupci">Broj stupaca (2-50):</label>
+                <input type="number" id="stupci" class="input-box" value="5" min="2" max="50">
+            </div>
+
+            <div class="input-group">
+                <label for="smjerMod">Odaberite smjer kretanja:</label>
+                <select id="smjerMod" class="select-box">
+                    <option value="1">1. Dolje desno -> U smjeru kazaljke</option>
+                    <option value="2">2. Dolje lijevo -> U smjeru kazaljke</option>
+                    <option value="3">3. Gore lijevo -> U smjeru kazaljke</option>
+                    <option value="4">4. Gore desno -> U smjeru kazaljke</option>
+                    <option value="5">5. Dolje desno -> Kontra kazaljke</option>
+                    <option value="6">6. Dolje lijevo -> Kontra kazaljke</option>
+                    <option value="7">7. Gore lijevo -> Kontra kazaljke</option>
+                    <option value="8">8. Gore desno -> Kontra kazaljke</option>
+                    <option value="9">9. Sredina -> Lijevo (U smjeru)</option>
+                    <option value="10">10. Sredina -> Desno (U smjeru)</option>
+                    <option value="11">11. Sredina -> Gore (U smjeru)</option>
+                    <option value="12">12. Sredina -> Dolje (U smjeru)</option>
+                    <option value="13">13. Sredina -> Lijevo (Kontra)</option>
+                    <option value="14">14. Sredina -> Desno (Kontra)</option>
+                    <option value="15">15. Sredina -> Gore (Kontra)</option>
+                    <option value="16">16. Sredina -> Dolje (Kontra)</option>
+                </select>
+            </div>
+            
+            <button id="btnCreate" class="btn-submit">Kreiraj tablicu</button>
+        </div>
+
+        
+        <div class="output-section">
+            <div id="izlazTablica" class="matrix-grid"></div>
+        </div>
+    </div>
+
+    <script src="skripta.js"></script>
+</body>
+</html>
+
+
+    

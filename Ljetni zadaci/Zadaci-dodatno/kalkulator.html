@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jednostavan Kalkulator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 340px;
+            text-align: center;
+        }
+        h2 { color: #0072ff; margin-bottom: 20px; }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        input, select {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            width: 100%;
+            text-align: center;
+        }
+        input:focus, select:focus { border-color: #0072ff; outline: none; }
+        button {
+            padding: 14px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        button:hover { background: #0056c6; }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #0072ff;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Kalkulator (Switch)</h2>
+    
+    <div class="input-group">
+        <input type="number" id="broj1" placeholder="Unesite prvi broj" step="any">
+        
+        <select id="operacija">
+            <option value="+">Zbroji (+)</option>
+            <option value="-">Oduzmi (-)</option>
+            <option value="*">Pomnoži (*)</option>
+            <option value="/">Podijeli (/)</option>
+        </select>
+        
+        <input type="number" id="broj2" placeholder="Unesite drugi broj" step="any">
+        
+        <button onclick="pokreniKalkulator()">Izračunaj</button>
+    </div>
+
+    <div class="result" id="rezultat10"></div>
+</div>
+
+<script>
+    function pokreniKalkulator() {
+        const b1Unos = document.getElementById('broj1').value;
+        const b2Unos = document.getElementById('broj2').value;
+        const op = document.getElementById('operacija').value;
+        const rezDiv = document.getElementById('rezultat10');
+
+        if (b1Unos === "" || b2Unos === "") {
+            rezDiv.style.display = 'block';
+            rezDiv.style.borderLeftColor = '#c0392b';
+            rezDiv.style.color = '#c0392b';
+            rezDiv.textContent = "Molimo unesite oba broja!";
+            return;
+        }
+
+        const b1 = parseFloat(b1Unos);
+        const b2 = parseFloat(b2Unos);
+        let rezultat;
+
+        rezDiv.style.display = 'block';
+        rezDiv.style.borderLeftColor = '#0072ff';
+        rezDiv.style.color = '#333';
+
+        
+        switch (op) {
+            case '+':
+                rezultat = b1 + b2;
+                break;
+            case '-':
+                rezultat = b1 - b2;
+                break;
+            case '*':
+                rezultat = b1 * b2;
+                break;
+            case '/':
+                if (b2 === 0) {
+                    rezDiv.style.borderLeftColor = '#c0392b';
+                    rezDiv.style.color = '#c0392b';
+                    rezDiv.textContent = "Greška: Dijeljenje s nulom nije dopušteno!";
+                    return;
+                }
+                rezultat = b1 / b2;
+                break;
+            default:
+                rezDiv.textContent = "Nepoznata operacija.";
+                return;
+        }
+
+        rezDiv.innerHTML = `Rezultat: <span style="color:#0072ff;">${rezultat}</span>`;
+    }
+</script>
+
+</body>
+</html>

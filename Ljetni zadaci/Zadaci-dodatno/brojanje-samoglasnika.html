@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brojanje Samoglasnika</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            width: 360px;
+            text-align: center;
+        }
+        h2 { color: #11998e; margin-bottom: 10px; }
+        p { color: #666; font-size: 14px; margin-bottom: 20px; }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        input:focus { border-color: #11998e; outline: none; }
+        button {
+            padding: 12px;
+            background: #11998e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        button:hover { background: #0c7a71; }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #11998e;
+            text-align: left;
+            font-size: 16px;
+            color: #333;
+            word-wrap: break-word;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Brojanje Samoglasnika</h2>
+    <p>Unesite tekst i saznajte koliko ima samoglasnika (A, E, I, O, U):</p>
+    
+    <div class="input-group">
+        <input type="text" id="samoglasniciUnos" placeholder="Npr. Danas je lijep dan">
+        <button onclick="prebrojiSamoglasnike()">Prebroji</button>
+    </div>
+
+    <div class="result" id="rezultat7"></div>
+</div>
+
+<script>
+    function prebrojiSamoglasnike() {
+        const unos = document.getElementById('samoglasniciUnos').value;
+        const rezDiv = document.getElementById('rezultat7');
+
+        if (unos.trim() === "") {
+            rezDiv.style.display = 'block';
+            rezDiv.style.borderLeftColor = '#c0392b';
+            rezDiv.style.color = '#c0392b';
+            rezDiv.innerHTML = "<strong>Upozorenje:</strong> Polje ne smije biti prazno!";
+            return;
+        }
+
+        
+        const tekst = unos.toLowerCase();
+        const samoglasnici = ['a', 'e', 'i', 'o', 'u'];
+        let brojac = 0;
+
+        
+        for (let i = 0; i < tekst.length; i++) {
+            if (samoglasnici.includes(tekst[i])) {
+                brojac++;
+            }
+        }
+
+        rezDiv.style.display = 'block';
+        rezDiv.style.borderLeftColor = '#11998e';
+        rezDiv.style.color = '#333';
+        rezDiv.innerHTML = `<strong>Uneseni tekst:</strong> "${unos}"<br><strong>Broj samoglasnika:</strong> <span style="color:#11998e; font-weight:bold;">${brojac}</span>`;
+    }
+</script>
+
+</body>
+</html>

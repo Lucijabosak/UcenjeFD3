@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pretvorba Temperature</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            width: 360px;
+            text-align: center;
+        }
+        h2 { color: #d35400; margin-bottom: 10px; }
+        p { color: #666; font-size: 14px; margin-bottom: 20px; }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        input, select {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        input:focus, select:focus { border-color: #ff7e5f; outline: none; }
+        button {
+            padding: 12px;
+            background: #ff7e5f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        button:hover { background: #e66747; }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #ff7e5f;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Pretvorba Temperature</h2>
+    <p>Odaberite smjer, unesite vrijednost i pretvorite temperaturu:</p>
+    
+    <div class="input-group">
+        <select id="smjerPretvorbe">
+            <option value="CtoF">Iz Celzijusa u Fahrenheite (°C → °F)</option>
+            <option value="FtoC">Iz Fahrenheita u Celzijuse (°F → °C)</option>
+        </select>
+        <input type="number" id="temperaturaUnos" placeholder="Npr. 25" step="any">
+        <button onclick="pretvoriTemperaturu()">Pretvori</button>
+    </div>
+
+    <div class="result" id="rezultat8"></div>
+</div>
+
+<script>
+    function pretvoriTemperaturu() {
+        const unos = document.getElementById('temperaturaUnos').value;
+        const smjer = document.getElementById('smjerPretvorbe').value;
+        const rezDiv = document.getElementById('rezultat8');
+
+        if (unos === "") {
+            rezDiv.style.display = 'block';
+            rezDiv.style.borderLeftColor = '#c0392b';
+            rezDiv.style.color = '#c0392b';
+            rezDiv.textContent = "Molimo unesite temperaturu!";
+            return;
+        }
+
+        const temp = parseFloat(unos);
+        let rezultat = 0;
+
+        rezDiv.style.display = 'block';
+        rezDiv.style.borderLeftColor = '#ff7e5f';
+        rezDiv.style.color = '#333';
+
+        if (smjer === "CtoF") {
+            
+            rezultat = (temp * 9 / 5) + 32;
+            rezDiv.innerHTML = `${temp} °C = <span style="color:#ff7e5f;">${rezultat.toFixed(2)} °F</span>`;
+        } else {
+            
+            rezultat = (temp - 32) * 5 / 9;
+            rezDiv.innerHTML = `${temp} °F = <span style="color:#ff7e5f;">${rezultat.toFixed(2)} °C</span>`;
+        }
+    }
+</script>
+
+</body>
+</html>
