@@ -11,7 +11,42 @@ npm i react-number-format
 npm install @lottiefiles/dotlottie-react
 
 
+// za gebneriranje podataka
+npm install @faker-js/faker
 
+// za pdf
+npm install jspdf jspdf-autotable
+
+
+// za lordicon ikone
+npm install @lordicon/react
+
+
+// za rad s slikama
+npm install react-cropper
+
+// za kontrole
+npm install zod
+
+// za hash lozinki
+npm install bcryptjs
+
+
+// grafovi
+npm install highcharts highcharts-react-official
+
+
+// RIVE animacije
+npm install @rive-app/react-canvas
+
+
+
+// rad s firebase
+npm install firebase
+
+
+// rad s sass
+npm install sass
 
 
 // Zanimljivije zavisnosti

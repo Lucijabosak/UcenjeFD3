@@ -11,7 +11,34 @@ export const RouteNames = {
     POLAZNICI: '/polaznici',
     POLAZNICI_NOVI: '/polaznici/novi',
     POLAZNICI_PROMJENA: '/polaznici/:sifra',
+
+    GRUPE: '/grupe',
+    GRUPE_NOVI: '/grupe/novi',
+    GRUPE_PROMJENA: '/grupe/:sifra',
+
+    OPERATERI: '/operateri',
+    OPERATERI_NOVI: '/operateri/novi',
+    OPERATERI_PROMJENA: '/operateri/:sifra',
+    OPERATERI_PROMJENA_LOZINKE: '/operateri/:sifra/lozinka',
+
+    GENERIRANJE_PODATAKA: '/generiraj-podatke',
+
+    LOGIN: '/login',
+    REGISTRACIJA: '/registracija',
+
+    NADZORNA_PLOCA: '/nadzorna-ploca',
+    
+    APLIKACIJE_POLAZNIKA: '/aplikacije-polaznika'
 }
 
 // memorija, localStorage, firebase
-export const DATA_SOURCE = 'localStorage'
+export const DATA_SOURCE = 'firebase';
+
+// Predavač je e.
+// Polaznici su eN. gdje je N broj s origo servera (npr e1.)
+export const PrefixStorage = {
+    SMJEROVI: 'e.smjerovi',
+    POLAZNICI: 'e.polaznici',
+    GRUPE: 'e.grupe',
+    OPERATERI: 'e.operateri'
+}
